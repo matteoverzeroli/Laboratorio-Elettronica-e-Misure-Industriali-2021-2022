@@ -1,0 +1,54 @@
+\documentclass{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{import}
+\usepackage{todonotes}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{pdfpages}
+\usepackage{siunitx}
+\usepackage[italiano]{algorithm2e}
+\usepackage{pdflscape}
+\usepackage{subfig}
+
+\usepackage[signatures,swapnames,sans]{frontespizio}
+
+\usepackage{geometry}
+\geometry{portrait, margin=3cm}
+
+\newcommand{\Fig}[0]{Fig.}
+
+\begin{document}
+	
+	\begin{frontespizio}
+		\Margini{3cm}{3cm}{3cm}{3cm}
+		\Universita{Bergamo}
+		\Logo[43.332mm]{unibg-mark}
+		\Divisione{Scuola di Ingegneria}
+		\Corso[Laurea Magistrale]{Ingegneria Informatica}
+		\Titolo{Elettronica e Misure Industriali}
+		\Sottotitolo{Relazione esperienze di laboratorio}
+		\Punteggiatura{}
+		\NRelatore{Prof.}{}
+		\Relatore{Valerio Re}
+		\NRelatore{Prof.}{}
+		\Relatore{Massimo Manghisoni}
+		\Candidato[1057926]{Matteo Verzeroli}
+		\Annoaccademico{2021--2022}
+		\begin{Preambolo*}
+			\usepackage[italian]{babel}
+			\usepackage[T1]{fontenc}
+			\usepackage[utf8]{inputenc}
+			\usepackage{microtype}
+			\usepackage{lmodern}
+			\graphicspath{{img/}}
+			
+			\renewcommand{\frontinstitutionfont}{\fontsize{14}{17}\bfseries\scshape}
+			\renewcommand{\fronttitlefont}{\fontsize{17}{21}\bfseries\scshape}
+			\renewcommand{\frontfootfont}{\fontsize{12}{14}\bfseries\scshape}
+		\end{Preambolo*}
+	\end{frontespizio}	
+\end{document}
