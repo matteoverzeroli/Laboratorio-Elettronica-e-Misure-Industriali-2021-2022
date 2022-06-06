@@ -7,7 +7,7 @@ Il primo circuito realizzato in laboratorio è un \textit{emmitter follower}, di
 	\label{fig:emitterfollwer}
 \end{figure}
 \section{Punto di lavoro}
-Per analizzare il circuito, si procede all'analisi del punto di lavoro, dove i generatori di tensioni e correnti alternate vengono sostituiti rispettivamente con un corto circuito o un circuito aperto.
+Per analizzare il circuito, si procede all'analisi del punto di lavoro, dove i generatori di tensioni e correnti alternate vengono sostituiti rispettivamente con un corto circuito o un circuito aperto (\Fig\ref{fig:emitterfollwer_puntodilavoro}).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 1/emitter follower_punto di lavoro_printout}
@@ -25,13 +25,30 @@ Infine, la corrente di emettitore (e di conseguenza anche la corrente di collett
 Come si può notare, si verifica l'ipotesi che il transistor si trova in regione attiva diretta, dal momento che $V_{CB}>0$.
 
 Avendo ricavato la corrente di collettore stazionaria, è utile calcolare anche la transcoduttanza del transistor: $g_m=\frac{I_C^*}{\phi_T}$. Essa sarà utile nell'analisi di piccolo segnale.
-\section{Analisi di piccolo segnale}
+\section{Analisi per piccolo segnale}
+Consideriamo ora l'analisi per piccolo segnale del circuito, sostituendo il transistor con il modello semplificato senza resistenza di base. Si procede quindi anche spegnere i generatori di grandezze continue ottenendo il circuito mostrato in figura \ref{fig:emitterfollwer_piccolo segnale}. Come si può notare, il transistor è sostituito da un generatore di corrente ideale controllato dalla tensione $v_be$ e il terminale di base rimane isolato rispetto al collettore e all'emettitore. La transcoduttanza \textit{g\sub{m}} è quella calcolata nell'analisi DC.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 1/emitter follower_piccolo segnale}
+	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 1/emitter follower_piccolo segnale_printout}
 	\caption{Analisi di piccolo segnale del circuito emitter follower.}
 	\label{fig:emitterfollwer_piccolo segnale}
 \end{figure}
+Si noti che la tensione v\sub{B} è pari a v\sub{i}, poiché la corrente nella resistenza R\sub{B} è nulla.
+Per calcolare la funzione di trasferimento tra la tensione in ingresso (V\sub{i}) e la tensione in uscita (V\sub{o}) calcoliamo il bilancio di correnti al nodo \textbf{E}:
+\begin{equation}
+	\begin{split}
+		i_c&=g_m * v_{be} = i_e \\ 
+		v_b&=v_i \\
+		i_c&=g_m*(v_B-v_E)=g_m*(v_i-v_o) \\
+		i_e&=\frac{v_e-\SI{0}{\volt}}{R_E}=\frac{v_o}{R_E} \\
+		\frac{v_o}{R_E}&=g_m*(v_i-v_o) \\
+		\frac{v_o}{v_i}&=\frac{g_m*RE}{1+g_m*R_E}\simeq 1, \; per \; g_m*R_E\gg 1 \\
+	\end{split}
+\end{equation}
+\todo{controllare lettere maiuscole e minuscole correnti tensioni}
+
+
+
 \section{Componenti e misure}
 \begin{figure}[h!]
 	\centering
