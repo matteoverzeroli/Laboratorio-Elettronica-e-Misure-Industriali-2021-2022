@@ -4772,7 +4772,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <busses>
 </busses>
 <nets>
-<net name="VE" class="0">
+<net name="VO" class="0">
 <segment>
 <pinref part="RE" gate="G$1" pin="2"/>
 <pinref part="Q" gate="G1" pin="E"/>
