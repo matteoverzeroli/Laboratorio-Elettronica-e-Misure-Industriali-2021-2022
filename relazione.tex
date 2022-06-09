@@ -27,6 +27,10 @@
 
 \newcommand{\Fig}[0]{Fig.}
 
+\usepackage{titlesec}
+
+\titleformat{\chapter}{\normalfont\huge}{}{20pt}{\huge\bfseries}
+
 \begin{document}
 	\begin{frontespizio}
 		\Margini{3cm}{3cm}{3cm}{3cm}
@@ -60,5 +64,9 @@
 	\tableofcontents
 	
 	\import{./TextFiles}{Laboratorio 1.tex}
+	
+	\clearpage
+	
+	\import{./TextFiles}{Laboratorio 2.tex}
 
 \end{document}
