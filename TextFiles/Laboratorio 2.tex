@@ -153,8 +153,18 @@ Il condensatore disaccoppia in DC i nodi ai suoi capi. Quindi viene considerato 
 	\end{split}
 \end{equation}
 
+Una volta realizzato il circuito, sono state misurate le tensioni V\sub{E} e V\sub{B} grazie al multimetro, da cui è poi possibile ricavare le correnti I\sub{1}, I\sub{2} e I\sub{E} tramite la legge di Ohm. Infine, è possibile calcolare la corrente di base come $I_B=I_1-I_2$ (bilancio delle correnti al nodo V\sub{B}) e la corrente di collettore $I_C=I_E-I_B$.
+Sono stati ottenuti i seguenti valori:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c}
+		\hline
+		V\sub{o} [V] & V\sub{B} [V] & I\sub{1} [mA] & I\sub{2} [mA] & I\sub{E} [mA] & I\sub{B} [mA] & I\sub{C} [mA]\\ \hline
+		4.556 & 5.172 & 0.0363 & 0.0326 & 0.5917 & 0.0037 & 0.5880 \\ \hline
+	\end{tabular}
+\end{table}
 
-
+\todo{immagine xy e andamento segnale per guadagno}
 
 
 
