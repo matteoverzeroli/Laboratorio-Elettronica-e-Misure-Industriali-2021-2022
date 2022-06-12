@@ -46,7 +46,7 @@ Si vuole ora modificare il circuito precedente in modo da alimentarlo tra alimen
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 2/emitter follower}
-	\caption{Schematico del circuito emitter follower single-ended.}
+	\caption{Schematico della prima versione del circuito emitter follower single-ended.}
 	\label{fig:emitterfollwer_se}
 \end{figure}
 Tuttavia, alimentando questo circuito e applicando una tensione in ingresso V\sub{i} con frequenza di \SI{1}{\kilo\hertz} e tensione picco-picco di \SI{4}{\volt}, il circuito non funziona. Analizziamo il punto di lavoro stazionario (\Fig\ref{fig:emitterfollwer_se_DC}).
@@ -73,3 +73,88 @@ Questo comportamento è stato verificato sul circuito reale. In figura \ref{fig:
 	\caption{Misurazione della tensione in ingresso (CH1) e in uscita (CH2) del circuito emitter follower single-ended analizzato precedentemente con tensione picco-picco di \SI{4}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
 	\label{fig:emitterfollwer_se_errore}
 \end{figure}
+
+Per far funzionare correttamente il circuito bisognerebbe alzare la tensione di base, aggiungendo un offset nel segnale, in modo che il transistor sia sempre polarizzato correttamente lungo tutto il periodo della sinusoide.
+
+\section{Emitter follower single-ended: seconda versione}
+Per garantire la corretta polarizzazione del transistor, applicando una tensione di offset sulla base, è stato inserito un partitore di tensione realizzato con le resistenze R\sub{1} e R\sub{2}, rispettivamente di valore \SI{130}{\kilo\ohm} e \SI{150}{\kilo\ohm} (\Fig\ref{fig:emitterfollwer_v2}). In questo modo, supponendo la corrente di base nulla (ossia $\beta\to\infty$) la tensione V\sub{B} si ottiene:
+\begin{equation}
+	V_B= \SI{10}{\volt}*\frac{R_2}{R_2+R_1}
+	=\SI{10}{\volt}*\frac{\SI{150}{\kilo\ohm}}{\SI{150}{\kilo\ohm}+\SI{130}{\kilo\ohm}}\simeq\SI{5.357}{\volt}
+	\label{eq:1}
+\end{equation}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 2/emitter follower_v2}
+	\caption{Schematico della seconda versione del circuito emitter follower single-ended.}
+	\label{fig:emitterfollwer_v2}
+\end{figure}
+
+Si noti come è stato necessario inserire un condensatore \textit{C} tra V\sub{i} e V\sub{B} in modo da disaccoppiare in continua i due nodi. Se non si inserisse un condensatore, il generatore V\sub{i} porterebbe la tensione al nodo V\sub{B} a massa nell'analisi del punto di lavoro, riportando il circuito nella situazione precedente.
+
+\subsection{Componenti e misure}
+Per realizzare il circuito in laboratorio (\Fig\ref{fig:emitterfollwer_v2_circuito}), si sono utilizzati i seguenti componenti:
+\begin{itemize}
+	\item transistor 2N3904;
+	\item tre resistenze rispettivamente da R\sub{11}=\SI{12}{\kilo\ohm}, R\sub{12}=\SI{39}{\kilo\ohm} e R\sub{13}=\SI{82}{\kilo\ohm} connesse in serie per realizzare la resistenza R\sub{1};
+	\item tre resistenze rispettivamente da R\sub{21}=\SI{39}{\kilo\ohm}, R\sub{22}=\SI{39}{\kilo\ohm} e R\sub{23}=\SI{82}{\kilo\ohm} connesse in serie per realizzare la resistenza R\sub{2};
+	\item due resistenze rispettivamente da R\sub{E1}=\SI{3.9}{\kilo\ohm}, R\sub{E2}=\SI{3.9}{\kilo\ohm} connesse in serie per realizzare la resistenza R\sub{E};
+	\item condensatore C da \SI{1}{\micro\farad}.
+\end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth,angle=-90]{./ImageFiles/Laboratorio 2/IMG\_20220517\_122529}
+	\caption{Foto del circuito realizzato in laboratorio. `E possibile notare anche i terminali per l'applicazione del segnale a un capo del condensatore.}
+	\label{fig:emitterfollwer_v2_circuito}
+\end{figure}
+
+Inoltre, sono state utilizzate i seguenti strumenti:
+\begin{itemize}
+	\item alimentatore da banco con tensione positiva \SI{10}{\volt} e limite in corrente di \SI{50}{\milli\ampere};
+	\item oscilloscopio a due canali;
+	\item generatore di forme d'onda;
+	\item multimetro da banco.
+\end{itemize}
+
+I valori significativi di tutti i componenti sono stati misurati attraverso il multimetro. Di seguito si riportano le misure effettuate:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c|c|c}
+		\hline
+		Componente & Valore nominale & Valore misurato \\ \hline
+		R\sub{11} &\SI{12}{\kilo\ohm} & \SI{11.9}{\kilo\ohm} \\ \hline
+		R\sub{12} &\SI{39}{\kilo\ohm} & \SI{39.0}{\kilo\ohm} \\ \hline
+		R\sub{13} &\SI{82}{\kilo\ohm} & \SI{82.1}{\kilo\ohm} \\ \hline
+		R\sub{21} &\SI{39}{\kilo\ohm} & \SI{37.8}{\kilo\ohm} \\ \hline
+		R\sub{22} &\SI{39}{\kilo\ohm} & \SI{38.8}{\kilo\ohm} \\ \hline
+		R\sub{23} &\SI{82}{\kilo\ohm} & \SI{82.2}{\kilo\ohm} \\ \hline
+		R\sub{E1} &\SI{3.9}{\kilo\ohm} & \SI{3.9}{\kilo\ohm} \\ \hline
+		R\sub{E2} &\SI{3.9}{\kilo\ohm} & \SI{3.8}{\kilo\ohm} \\ \hline
+		Vd\sub{B-E} & $\simeq$ \SI{0.7}{\volt} & \SI{0.700}{\volt} \\ \hline
+		Vd\sub{B-C} & $\simeq$ \SI{0.7}{\volt} & \SI{0.679}{\volt} \\ \hline
+	\end{tabular}
+\end{table}
+
+L'analisi del punto stazionario e di piccolo segnale possono essere facilmente ricavate dalle analisi precedenti. In particolare, nell'analisi di piccolo segnale è sufficiente considerare il condensatore come un corto. Di conseguenza $V_B=V_i$ e l'analisi prosegue come nel circuito precedente. Per quanto riguarda l'analisi del punto di lavoro, otteniamo il circuito rappresentato in figura \ref{fig:emitterfollwer_v2_DC}. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 2/emitter follower_v2_punto di lavoro-printout}
+	\caption{Analisi punto di lavoro del circuito emitter follower single-ended (seconda versione).}
+	\label{fig:emitterfollwer_v2_DC}
+\end{figure}
+
+Il condensatore disaccoppia in DC i nodi ai suoi capi. Quindi viene considerato come un circuito aperto. Inoltre, si considera la corrente di base nulla. Per cui, la corrente I\sub{1} è uguale alla corrente I\sub{2}. Applicando il bilancio di correnti al nodo V\sub{B}, otteniamo la formula del partitore già mostrata (Eq.\ref{eq:1}). Per cui, considerando il transistor in regione attiva diretta, la tensione V\sub{o} sarà $V_o=V_B-\SI{0.7}{\volt}\simeq\SI{5.357}{\volt}-\SI{0.7}{\volt}=\SI{4.657}{\volt}$. Inoltre, facendo un bilancio di correnti nel transistor, si ottiene:
+\begin{equation}
+	\begin{split}
+		I_C&=I_E \\
+		&=\frac{V_o-\SI{0}{\volt}}{R_E} \\
+		&=\frac{\SI{4.657}{\volt}}{\SI{7.5}{\kilo\ohm}}=\SI{0.6209}{\milli\ampere}
+	\end{split}
+\end{equation}
+
+
+
+
+
+

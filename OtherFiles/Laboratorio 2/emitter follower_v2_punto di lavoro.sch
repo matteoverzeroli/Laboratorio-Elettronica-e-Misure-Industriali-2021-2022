@@ -4670,50 +4670,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="ngspice-simulation" urn="urn:adsk.eagle:library:527439">
-<description>SPICE compatible library parts</description>
-<packages>
-</packages>
-<symbols>
-<symbol name="VOLTAGE" urn="urn:adsk.eagle:symbol:527440/5" library_version="18">
-<description>Independent Voltage Source, either DC, AC, PULSE, SINE, PWL, EXP, or SFFM</description>
-<circle x="0" y="0" radius="5.08" width="0.1524" layer="94"/>
-<pin name="+" x="0" y="7.62" visible="off" length="short" direction="pas" rot="R270"/>
-<pin name="-" x="0" y="-7.62" visible="off" length="short" direction="pas" rot="R90"/>
-<text x="7.62" y="2.54" size="1.778" layer="95">&gt;NAME</text>
-<text x="7.62" y="0" size="1.778" layer="96">&gt;VALUE</text>
-<text x="7.62" y="-2.54" size="1.778" layer="97">&gt;SPICEMODEL</text>
-<text x="7.62" y="-5.08" size="1.778" layer="97">&gt;SPICEEXTRA</text>
-<wire x1="-1.27" y1="2.54" x2="1.27" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="0" y1="3.81" x2="0" y2="1.27" width="0.1524" layer="94"/>
-<wire x1="-1.27" y1="-2.54" x2="1.27" y2="-2.54" width="0.1524" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="VOLTAGE" urn="urn:adsk.eagle:component:527469/5" prefix="V" uservalue="yes" library_version="18">
-<description>Independent Voltage Source, either DC, AC, PULSE, SINE, PWL, EXP, or SFFM</description>
-<gates>
-<gate name="G$1" symbol="VOLTAGE" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name="">
-<attribute name="VALUE" value="0V" constant="no"/>
-<attribute name="_EXTERNAL_" value="" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-<spice>
-<pinmapping spiceprefix="V">
-<pinmap gate="G$1" pin="+" pinorder="1"/>
-<pinmap gate="G$1" pin="-" pinorder="2"/>
-</pinmapping>
-</spice>
-</deviceset>
-</devicesets>
-</library>
 <library name="supply2" urn="urn:adsk.eagle:library:372">
 <description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
 GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
@@ -4760,41 +4716,39 @@ In this library the device names are the same as the pin names of the symbols, t
 </classes>
 <parts>
 <part name="Q" library="transistor" library_urn="urn:adsk.eagle:library:402" deviceset="2N3904" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
-<part name="RB" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/5" package3d_urn="urn:adsk.eagle:package:23488/1" value="270 Ω"/>
-<part name="VI" library="ngspice-simulation" library_urn="urn:adsk.eagle:library:527439" deviceset="VOLTAGE" device="" value="0V"/>
-<part name="RE" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/5" package3d_urn="urn:adsk.eagle:package:23488/1" value="3.3 kΩ"/>
-<part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="RE" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/5" package3d_urn="urn:adsk.eagle:package:23488/1" value="7.5 kΩ"/>
 <part name="SUPPLY1" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="+10V" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/5" package3d_urn="urn:adsk.eagle:package:23488/1" value="130 kΩ"/>
+<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="0204/5" package3d_urn="urn:adsk.eagle:package:23488/1" value="150 kΩ"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
+<text x="41.656" y="42.164" size="1.778" layer="95">VB</text>
 </plain>
 <instances>
 <instance part="Q" gate="G1" x="53.34" y="40.64" smashed="yes">
 <attribute name="NAME" x="58.42" y="40.64" size="1.778" layer="95"/>
 <attribute name="VALUE" x="58.42" y="38.1" size="1.778" layer="96"/>
 </instance>
-<instance part="RB" gate="G$1" x="40.64" y="40.64" smashed="yes">
-<attribute name="NAME" x="36.83" y="42.1386" size="1.778" layer="95"/>
-<attribute name="VALUE" x="36.83" y="37.338" size="1.778" layer="96"/>
-</instance>
-<instance part="VI" gate="G$1" x="27.94" y="30.48" smashed="yes">
-<attribute name="NAME" x="34.036" y="30.734" size="1.778" layer="95"/>
-</instance>
 <instance part="RE" gate="G$1" x="55.88" y="25.4" smashed="yes" rot="R90">
 <attribute name="NAME" x="54.3814" y="21.59" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="59.182" y="21.59" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND1" gate="1" x="27.94" y="15.24" smashed="yes">
-<attribute name="VALUE" x="25.4" y="12.7" size="1.778" layer="96"/>
+<instance part="SUPPLY1" gate="G$1" x="55.88" y="66.04" smashed="yes">
+<attribute name="VALUE" x="53.34" y="69.215" size="1.778" layer="96"/>
 </instance>
-<instance part="SUPPLY1" gate="G$1" x="55.88" y="58.42" smashed="yes">
-<attribute name="VALUE" x="53.34" y="61.595" size="1.778" layer="96"/>
+<instance part="GND2" gate="1" x="55.88" y="12.7" smashed="yes">
+<attribute name="VALUE" x="53.34" y="10.16" size="1.778" layer="96"/>
 </instance>
-<instance part="GND2" gate="1" x="55.88" y="15.24" smashed="yes">
-<attribute name="VALUE" x="53.34" y="12.7" size="1.778" layer="96"/>
+<instance part="R1" gate="G$1" x="40.64" y="53.34" smashed="yes" rot="R90">
+<attribute name="NAME" x="39.1414" y="49.53" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="43.942" y="49.53" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="R2" gate="G$1" x="40.64" y="25.4" smashed="yes" rot="R90">
+<attribute name="NAME" x="39.1414" y="21.59" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="43.942" y="21.59" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -4811,38 +4765,37 @@ In this library the device names are the same as the pin names of the symbols, t
 <label x="60.452" y="33.782" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$2" class="0">
-<segment>
-<pinref part="Q" gate="G1" pin="B"/>
-<pinref part="RB" gate="G$1" pin="2"/>
-<wire x1="50.8" y1="40.64" x2="45.72" y2="40.64" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="VI" gate="G$1" pin="+"/>
-<pinref part="RB" gate="G$1" pin="1"/>
-<wire x1="27.94" y1="38.1" x2="27.94" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="40.64" x2="35.56" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="R1" gate="G$1" pin="1"/>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="40.64" y1="48.26" x2="40.64" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="Q" gate="G1" pin="B"/>
+<wire x1="40.64" y1="40.64" x2="40.64" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="40.64" x2="40.64" y2="40.64" width="0.1524" layer="91"/>
+<junction x="40.64" y="40.64"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="VI" gate="G$1" pin="-"/>
-<pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="27.94" y1="22.86" x2="27.94" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="RE" gate="G$1" pin="1"/>
-<wire x1="55.88" y1="17.78" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="15.24" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
+<pinref part="R2" gate="G$1" pin="1"/>
+<wire x1="40.64" y1="20.32" x2="40.64" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="15.24" x2="55.88" y2="15.24" width="0.1524" layer="91"/>
+<junction x="55.88" y="15.24"/>
 </segment>
 </net>
 <net name="+10V" class="0">
 <segment>
 <pinref part="Q" gate="G1" pin="C"/>
-<wire x1="55.88" y1="45.72" x2="55.88" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="45.72" x2="55.88" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="SUPPLY1" gate="G$1" pin="+10V"/>
+<wire x1="55.88" y1="63.5" x2="40.64" y2="63.5" width="0.1524" layer="91"/>
+<junction x="55.88" y="63.5"/>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="40.64" y1="63.5" x2="40.64" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
