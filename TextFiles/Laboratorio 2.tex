@@ -92,7 +92,7 @@ Per garantire la corretta polarizzazione del transistor, applicando una tensione
 
 Si noti come è stato necessario inserire un condensatore \textit{C} tra V\sub{i} e V\sub{B} in modo da disaccoppiare in continua i due nodi. Se non si inserisse un condensatore, il generatore V\sub{i} porterebbe la tensione al nodo V\sub{B} a massa nell'analisi del punto di lavoro, riportando il circuito nella situazione precedente.
 
-\subsection{Componenti e misure}
+\section{Componenti e misure}
 Per realizzare il circuito in laboratorio (\Fig\ref{fig:emitterfollwer_v2_circuito}), si sono utilizzati i seguenti componenti:
 \begin{itemize}
 	\item transistor 2N3904;
@@ -152,6 +152,7 @@ Il condensatore disaccoppia in DC i nodi ai suoi capi. Quindi viene considerato 
 		&=\frac{\SI{4.657}{\volt}}{\SI{7.5}{\kilo\ohm}}=\SI{0.6209}{\milli\ampere}
 	\end{split}
 \end{equation}
+\`E verificata anche l'ipotesi che il transistor si trovi in regione attiva diretta, in quanto $V_{CE}>0$.
 
 Una volta realizzato il circuito, sono state misurate le tensioni V\sub{E} e V\sub{B} grazie al multimetro, da cui è poi possibile ricavare le correnti I\sub{1}, I\sub{2} e I\sub{E} tramite la legge di Ohm. Infine, è possibile calcolare la corrente di base come $I_B=I_1-I_2$ (bilancio delle correnti al nodo V\sub{B}) e la corrente di collettore $I_C=I_E-I_B$.
 Sono stati ottenuti i seguenti valori:
@@ -164,7 +165,21 @@ Sono stati ottenuti i seguenti valori:
 	\end{tabular}
 \end{table}
 
-\todo{immagine xy e andamento segnale per guadagno}
+Come si può osservare, le misure reali rispecchiano con buona approssimazione i valori attesi dall'analisi teorica. 
+
+Inoltre, in figura \ref{fig:emitterfollwer_v2_AC} sono rappresentati i segnali in ingresso al circuito e all'uscita, misurati tramite l'oscilloscopio, con all'ingresso una sinusoide di ampiezza \SI{2}{\volt} e frequenza \SI{1}{\kilo\hertz}. Come si può notare, i segnali in ingresso e in uscita hanno, con buona approssimazione, la medesima ampiezza e non è presente uno sfasamento. Infatti, il grafico XY (\Fig\ref{fig:emitterfollwer_v2_XY}) mostra un segmento, come aspettato in caso di segnali in fase.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./ImageFiles/Laboratorio 2/TEK00023}
+	\caption{Confronto tra il segnale in ingresso (CH1) e in uscita (CH2) all'emitter follower.}
+	\label{fig:emitterfollwer_v2_AC}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{./ImageFiles/Laboratorio 3/TEK00001}
+	\caption{Grafico XY ingresso (CH1) e in uscita (CH2) all'emitter follower.}
+	\label{fig:emitterfollwer_v2_XY}
+\end{figure}
 
 
 
