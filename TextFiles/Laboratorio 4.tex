@@ -42,25 +42,121 @@ In laboratorio è stato possibile misurare la tensione al nodo v\sub{i} in ingre
 	\label{fig:hpf_10hz}
 \end{figure}
 
-\section{Amplificatore operazionale \textmu A741}
+\section{Amplificatore operazionale \textmu A741: amplificatore invertente}
 La successiva esperienza consisteva nel realizzare un amplificatore invertente utilizzando l'amplificatore operazionale \textmu A741, realizzando il seguente circuito:
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{./OtherFiles/Laboratorio 4/opam_inv}
-	\caption{Amplificatore operazionale in configurazione invertente.}
+	\caption{Amplificatore operazionale\textmu A741 in configurazione invertente.}
 	\label{fig:opamp_inv}
 \end{figure}
-In particolare, per le resistenze R\sub{1} e R\sub{2} sono state utilizzate le resistenze utilizzate nel circuito precedente. Le tensioni di alimentazione +E e -E sono state inizialmente impostate a \SI{+10}{\volt} e \SI{-10}{\volt}.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{./ImageFiles/Laboratorio 4/IMG\_20220531\_113527\_2}
-	\caption{Circuito realizzato con amplificatore operazionale in configurazione invertente.}
+	\caption{Circuito realizzato in laboratorio con amplificatore operazionale \textmu A741 in configurazione invertente.}
 	\label{fig:opamp_inv_circuito}
 \end{figure}
+
+In particolare, per le resistenze R\sub{1} e R\sub{2} sono state utilizzate le resistenze utilizzate nel circuito precedente. Le tensioni di alimentazione +E e -E sono state inizialmente impostate a \SI{+10}{\volt} e \SI{-10}{\volt}.
 
 Analizzando il circuito, è facilmente ricavabile che 
 \begin{equation}
 	V_O=-\frac{R_2}{R_1}V_i
 \end{equation}
-tramite un bilancio di corrente nel nodo V\textsuperscript{+} e ricordando che, in presenza di una reazione negativa, V\textsuperscript{+}=V\textsuperscript{-}. Con i valori di resistenze utilizzate, ci aspettiamo un guadagno di circa 2.17.
+tramite un bilancio di corrente nel nodo V\textsuperscript{+} e ricordando che, in presenza di una reazione negativa, V\textsuperscript{+}=V\textsuperscript{-}. Con i valori di resistenze utilizzate, ci aspettiamo un guadagno di circa 2.17. Infatti, le misure effettuate tramite l'oscilloscopio rilevano un guadagno pari a circa 2.12 (\Fig\ref{fig:opamp_inv_amp}). Inoltre, il segno meno nella funzione di trasferimento ci indica che i segnali di ingresso e uscita sono sfasati di \SI{180}{\degree}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00005}
+	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{2}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
+	\label{fig:opamp_inv_amp}
+\end{figure}
+
+Sostituendo le tensioni di alimentazione con +E=\SI{+5}{\volt} e -E=\SI{-5}{\volt}, si è provato a misurare la risposta del circuito a segnali in ingresso con ampiezza via via crescente da \SI{3}{\volt} fino a \SI{6}{\volt}. I risultati sono mostrati in figura \ref{fig:opamp_inv_sat}
+
+\begin{figure}[h!]
+	\centering
+	A
+	\vspace{0.5cm}
+	
+	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00008}
+	B
+	\vspace{0.5cm}
+	
+	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00012}
+	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{3}{\volt} (A) e \SI{6}{\volt} (B) e frequenza \SI{1}{\kilo\hertz}.}
+	\label{fig:opamp_inv_sat}
+\end{figure}
+
+Nella figura \ref{fig:opamp_inv_sat} è possibile notare il fenomeno della saturazione. Infatti, la tensione in uscita da un amplificatore operazione non può mai superare le tensioni di alimentazione positiva e negativa (qui fissate a \SI{+-5}{\volt}). In realtà, si nota come la tensione di saturazione positiva e negativa in un operazionale reale sono addirittura inferiori alle tensioni di alimentazione (nel nostro caso circa \SI{4}{\volt} e \SI{-3.3}{\volt}). Un altro modo per visualizzare le tensioni limite di saturazione è quello di utilizzare in ingresso un onda rettangolare e visualizzare l'andamento della tensione in uscita (\Fig\ref{fig:opamp_inv_sat_tri}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00015}
+	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) con segnale triangolare di ampiezza picco-picco \SI{6}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
+	\label{fig:opamp_inv_sat_tri}
+\end{figure}
+
+Inoltre, si osservi come le tensioni di saturazioni non sono simmetriche.
+
+\clearpage
+
+\section{Amplificatore operazionale \textmu A741: integratore}
+
+L'ultimo circuito analizzato in laboratorio permette di realizzare un integratore reale:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{./OtherFiles/Laboratorio 4/opam_int}
+	\caption{Circuito con amplificatore operazionale \textmu A741 in configurazione di integratore.}
+	\label{fig:opamp_int}
+\end{figure}
+
+\`E possibile ricavare la funzione di trasferimento del circuito tramite un bilancio di correnti nel nodo V\super{-}, ricordando che essendo l'amplificatore in retroazione negativa vale che V\super{+}=V\super{-}=\SI{0}{\volt}:
+\begin{equation}
+	\begin{split}
+		I_{R_1}&=I_{C}+I_{R_2} \\
+		\frac{V_i(s)-V^-(s)}{R_1}&=(V^-(s)-V_o(s))sC+\frac{V^-(s)-V_o(s)}{R_2} \\
+		\frac{V_i(s)-\SI{0}{\volt}}{R_1}&=(\SI{0}{\volt}-V_o(s))sC+\frac{\SI{0}{\volt}-V_o(s)}{R_2} \\
+		&\text{da cui si ricava} \\
+		V_o(s)&=-\frac{R_2}{R_1}\frac{1}{1+sR_2C}V_i(s)
+	\end{split}
+\end{equation}
+
+La funzione di trasferimento ricava è quella di un filtro passa basso. Passando al regime sinusoidale con $s=jw$ otteniamo:
+\begin{equation}
+	V_o(jw)=-\frac{R_2}{R_1}\frac{1}{1+jwR_2C}V_i(jw).
+\end{equation}
+Se $f\gg\frac{1}{2\pi R_2C}$ allora 
+\begin{equation}
+	V_o(jw)=-\frac{R_2}{R_1}\frac{1}{jwR_2C}V_i=-\frac{1}{jwR_1C}V_i(jw).
+\end{equation}
+che corrisponde nel dominio del tempo all'integrale del segnale V\sub{i} nel tempo:
+\begin{equation}
+	V_o(t)=-\frac{1}{R_1C}\int_0^TV_i(t) dt.
+\end{equation}
+
+Per verificarlo sperimentalmente, è stato applicato sull'ingresso V\sub{i} un'onda quadra di ampiezza \SI{1}{\volt} e frequenza di \SI{100}{\kilo\hertz}. Il segnale in uscita misurato sul nodo V\sub{o} è risultato essere un'onda triangolare (\Fig\ref{fig:opamp_int_quadra}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00016}
+	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) all'integratore. In ingresso è stata applicata un'onda quadra di ampiezza \SI{1}{\volt} e frequenza \SI{100}{\kilo\hertz}.}
+	\label{fig:opamp_int_quadra}
+\end{figure}
+
+\noindent
+Infatti, un'onda quadra di ampiezza 1 e periodo T può essere definita come una funzione a tratti:
+\begin{equation}
+	f(x)=
+	\begin{cases}
+		1,\;se\;0<=x<T/2 \\
+		-1,\;se\;T/2<=x<T 
+	\end{cases}
+\end{equation}
+La sua funzione integrale $F(x)=\int_0^xf(t)dt$ è la seguente:
+\begin{equation}
+	F(x)=
+	\begin{cases}
+		x,\;se\;0<=x<T/2 \\
+		T-x,\;se\;T/2<=x<T 
+	\end{cases}
+\end{equation}
+che rappresenta proprio un onda triangolare.
