@@ -8,27 +8,22 @@ Il primo circuito realizzato in laboratorio è un \textit{emmitter follower}, di
 	\label{fig:emitterfollwer}
 \end{figure}
 
+\noindent
+Come si analizzerà in seguito, questo circuito presenta un guadagno unitario e viene utilizzato per disaccoppiare l'ingresso dall'uscita.
+
 \section{Emitter follower: punto di lavoro}
-Per analizzare il circuito, si procede all'analisi del punto di lavoro, dove i generatori di tensioni e correnti alternate vengono sostituiti rispettivamente con un corto circuito o un circuito aperto (\Fig\ref{fig:emitterfollwer_puntodilavoro}).
+Per analizzare il circuito, si procede all'analisi del punto di lavoro, dove i generatori di tensioni e correnti alternate vengono sostituiti rispettivamente da un corto circuito e da un circuito aperto (\Fig\ref{fig:emitterfollwer_puntodilavoro}).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 1/emitter follower_punto di lavoro_printout}
 	\caption{Analisi del punto di lavoro del circuito emitter follower.}
 	\label{fig:emitterfollwer_puntodilavoro}
 \end{figure}
-In particolare, il generatore di tensione (di segnale) V\textsubscript{in} viene quindi considerato come un corto circuito che collega un terminale della resistenza R\textsubscript{B} a massa. Considerando il modello ideale del transistor Q , con $\beta\overrightarrow{}\infty$ e corrente di base nulla, si ricava che la corrente che attraversa la resistenza R\textsubscript{B} è nulla. Per cui, per la legge di Ohm $V=R*I$, la caduta di potenziale sulla resistenza è nulla. Per cui il nodo V\textsubscript{B} si trova a una tensione di \SI{0}{\volt}. 
+In particolare, il generatore di tensione (di segnale) v\textsubscript{i} viene quindi considerato come un corto circuito che collega un terminale della resistenza R\textsubscript{B} a massa. Considerando il modello ideale del transistor Q, con $\beta\overrightarrow{}\infty$ e corrente di base I\sub{B} nulla, si ricava che la corrente che attraversa la resistenza R\textsubscript{B} è nulla. Per cui, per la legge di Ohm $V=R*I$, la caduta di potenziale sulla resistenza è nulla. Quindi il nodo V\textsubscript{B} si trova a una tensione di \SI{0}{\volt}. 
 
-Se si esegue un bilancio di correnti delle correnti uscenti e entranti nel transistor si ottiene $I\sub{B}+I\sub{C}=I\sub{E}$. Dal momento che la corrente I\sub{B} è nulla, I\sub{C} = I\sub{E}.
+Se si esegue un bilancio di correnti sul nodo del transistor si ottiene $I\sub{B}+I\sub{C}=I\sub{E}$. Dal momento che la corrente I\sub{B} è nulla, I\sub{C} = I\sub{E}. La corrente di emettitore (e di conseguenza anche la corrente di collettore) si ricava dalla legge di Ohm: $I_E=I_C=\frac{\Delta V}{R_E}=\frac{V_O-(-\SI{10}{\volt})}{R_E}$. Infine, supponendo che il transistor si trovi in regione attiva diretta, $V_{BE}=V_{BO}=+\SI{0.7}{\volt}$. Quindi, $V_O=V_B-\SI{0.7}{\volt}= -\SI{0.7}{\volt}$. Si verifica l'ipotesi che il transistor si trova in regione attiva diretta, dal momento che $V_{CB}>0$. Avendo ricavato la corrente di collettore stazionaria, è utile calcolare anche la transcoduttanza del transistor $g_m=\frac{I_C^*}{\phi_T}$, con $I_C^*$ corrente di collettore stazionaria e $\phi_T\simeq\SI{26}{\milli\volt}$. Essa sarà utile nell'analisi di piccolo segnale.
 
-Supponendo che il transistor si trovi in regione attiva diretta, $V_{BE}=V_{BO}=+\SI{0.7}{\volt}$. Quindi, $V_O=V_B-\SI{0.7}{\volt}= -\SI{0.7}{\volt}$.
-
-Infine, la corrente di emettitore (e di conseguenza anche la corrente di collettore) si ricava dalla legge di Ohm: $I_E=I_C=\frac{\Delta V}{R_E}=\frac{V_O-(-\SI{10}{\volt})}{R_E}$. 
-
-Come si può notare, si verifica l'ipotesi che il transistor si trova in regione attiva diretta, dal momento che $V_{CB}>0$.
-
-Avendo ricavato la corrente di collettore stazionaria, è utile calcolare anche la transcoduttanza del transistor: $g_m=\frac{I_C^*}{\phi_T}$, con $I_C^*$ corrente di collettore stazionaria e $\phi_T\simeq\SI{26}{\milli\volt}$. Essa sarà utile nell'analisi di piccolo segnale.
-
-Nella seguente tabella, si riportano i valori teorici delle diverse grandezze che determinano il punto di lavoro e che dovranno essere confrontate con i valori misurati sul circuito reale.
+Nella seguente tabella, si riportano i valori teorici delle diverse grandezze che determinano il punto di lavoro, ottenute sostituendo i valori dei componenti utilizzati nel circuito. Questi valori dovranno essere confrontati con quelli misurati sul circuito reale.
 
 \begin{table}[h!]
 	\centering
@@ -40,44 +35,45 @@ Nella seguente tabella, si riportano i valori teorici delle diverse grandezze ch
 \end{table}
 
 \section{Emitter follower: analisi per piccolo segnale}
-Consideriamo ora l'analisi per piccolo segnale del circuito, sostituendo il transistor con il modello semplificato senza resistenza di base. Si procede quindi anche spegnere i generatori di grandezze continue ottenendo il circuito mostrato in figura \ref{fig:emitterfollwer_piccolo segnale}. Come si può notare, il transistor è sostituito da un generatore di corrente ideale controllato dalla tensione $v_{be}$ e il terminale di base rimane isolato rispetto al collettore e all'emettitore. La transcoduttanza \textit{g\sub{m}} è quella calcolata nell'analisi DC.
+Consideriamo ora l'analisi per piccolo segnale del circuito. Il transistor viene sostituito con il suo modello per piccoli segnali a bassa frequenza senza resistenza di base e si procede spegnendo i generatori di grandezze continue, ottenendo il circuito mostrato in figura \ref{fig:emitterfollwer_piccolo segnale}. Come si può notare, il transistor è sostituito da un generatore di corrente ideale controllato dalla tensione $v_{be}$ e il terminale di base rimane isolato rispetto al collettore e all'emettitore. La transcoduttanza \textit{g\sub{m}} è quella calcolata nell'analisi DC.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 1/emitter follower_piccolo segnale_printout}
+	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 1/emitter follower\_piccolo segnale\_printout}
 	\caption{Analisi di piccolo segnale del circuito emitter follower.}
 	\label{fig:emitterfollwer_piccolo segnale}
 \end{figure}
-Si noti che la tensione v\sub{B} è pari a v\sub{i}, poiché la corrente nella resistenza R\sub{B} è nulla.
-Per calcolare la funzione di trasferimento tra la tensione in ingresso (v\sub{i}) e la tensione in uscita (v\sub{o}) calcoliamo il bilancio di correnti al nodo \textbf{E}:
+Si noti che la tensione v\sub{b} è pari a v\sub{i}, poiché la corrente nella resistenza R\sub{B} è nulla.
+Per calcolare la funzione di trasferimento tra la tensione in ingresso v\sub{i} e la tensione in uscita v\sub{o}, si calcola il bilancio di correnti al nodo \textbf{E}:
 \begin{equation}
 	\begin{split}
-		i_c&=g_m * v_{be} = i_e \\ 
+		i_c&=g_mv_{be} = i_e \\ 
 		v_b&=v_i \\
-		i_c&=g_m*(v_B-v_E)=g_m*(v_i-v_o) \\
+		v_e&=v_o \\
+		i_c&=g_m(v_b-v_e)=g_m(v_i-v_o) \\
 		i_e&=\frac{v_e-\SI{0}{\volt}}{R_E}=\frac{v_o}{R_E} \\
-		\frac{v_o}{R_E}&=g_m*(v_i-v_o) \\
-		\frac{v_o}{v_i}&=\frac{g_m*RE}{1+g_m*R_E}\simeq 1, \; per \; g_m*R_E\gg 1 \\
+		\frac{v_o}{R_E}&=g_m(v_i-v_o) \\
+		\frac{v_o}{v_i}&=\frac{g_m R_E}{1+g_m R_E}\simeq 1, \; per \; g_m R_E\gg 1 \\
 	\end{split}
 \end{equation}
-\todo{controllare lettere maiuscole e minuscole correnti tensioni}
-Si realizza quindi un circuito in cui l'uscita insegue esattamente l'andamento della tensione in ingresso.
+Si realizza quindi un circuito a guadagno unitario.
 
 \section{Componenti e misure}
-Il circuito è stato realizzato in laboratorio su una breadboard e il risultato è visibile in figura \ref{fig:emitterfollwer_circuito}. Inizialmente, non è stato collegato il generatore di forme d'onda \textit{v\sub{i}}, sostituendolo con un collegamento a massa. In questo modo è possibile effettuare l'analisi del punto di lavoro del circuito.
+Il circuito è stato realizzato in laboratorio su una breadboard e il risultato è visibile in figura \ref{fig:emitterfollwer_circuito}. Inizialmente, non è stato collegato il generatore di forme d'onda v\sub{i} in ingresso al circuito, sostituendolo con un collegamento a massa. In questo modo è possibile effettuare l'analisi del punto di lavoro del circuito.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.4\linewidth]{./ImageFiles/Laboratorio 1/IMG\_20220510\_103526}
+	\includegraphics[width=0.6\linewidth]{./ImageFiles/Laboratorio 1/IMG\_20220510\_103526}
 	\caption{Foto del circuito realizzato in laboratorio.}
 	\label{fig:emitterfollwer_circuito}
 \end{figure}
 
+\noindent
 Per realizzare il circuito sono stati utilizzati i seguenti componenti: 
 \begin{itemize}
 	\item transistor 2N3904;
 	\item una resistenza da \SI{270}{\ohm} per realizzare la resistenza R\sub{B};
-	\item due resistenze rispettivamente da R\sub{E1}=\SI{1.5}{\ohm} e R\sub{E1}2=\SI{1.8}{\ohm} connesse in parallelo per realizzare la resistenza R\sub{E}.
+	\item due resistenze rispettivamente da R\sub{E1}=\SI{1.5}{\ohm} e R\sub{E2}=\SI{1.8}{\ohm} connesse in parallelo per realizzare la resistenza R\sub{E}.
 \end{itemize}
-Inoltre, sono state utilizzate i seguenti strumenti:
+Inoltre, sono stati utilizzati i seguenti strumenti:
 \begin{itemize}
 	\item alimentatore da banco con tensione positiva \SI{10}{\volt}, tensione negativa \SI{-10}{\volt} e limite in corrente di \SI{50}{\milli\ampere};
 	\item oscilloscopio a due canali;
@@ -85,51 +81,57 @@ Inoltre, sono state utilizzate i seguenti strumenti:
 	\item multimetro da banco.
 \end{itemize}
 
-Prima di utilizzare i componenti sono stati misurati, attraverso il multimetro, i valori di resistenze e delle tensioni delle giunzioni P-N tra \textit{base} e \textit{collettore} e tra \textit{base} e \textit{emettitore} del transistor, ottenendo le seguenti misure:
+\noindent
+Prima di realizzare il circuito, si sono misurati attraverso il multimetro i valori di resistenze e delle tensioni delle giunzioni P-N tra \textit{base} e \textit{collettore} e tra \textit{base} e \textit{emettitore} del transistor, ottenendo le seguenti misure:
 
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{c|c|c}
 		\hline
 		Componente & Valore nominale & Valore misurato \\ \hline
-		R\sub{B} & \SI{270}{\ohm} & \SI{278.56}{\ohm}  \\ \hline
+		R\sub{B} & \SI{270}{\ohm} & \SI{278.560}{\ohm}  \\ \hline
 		R\sub{E1} &\SI{1.5}{\kilo\ohm} & \SI{1.495}{\kilo\ohm} \\ \hline
 		R\sub{E2} &\SI{1.8}{\kilo\ohm} & \SI{1.810}{\kilo\ohm} \\ \hline
 		Vd\sub{B-E} & $\simeq$ \SI{0.7}{\volt} & \SI{0.700}{\volt} \\ \hline
 		Vd\sub{B-C} & $\simeq$ \SI{0.7}{\volt} & \SI{0.679}{\volt} \\ \hline
 	\end{tabular}
 \end{table}
+
+\noindent
 Si noti che le tensioni delle giunzioni P-N hanno valori diversi: ciò è dovuto alla tecnologia di realizzazione del transistor (tecnologia planare), nella quale le due giunzioni hanno una diversa lunghezza.
 
-Una volta realizzato il circuito sono state poi misurate le tensioni ai nodi V\sub{B} e V\sub{O} da cui è stato possibile ricavare (tramite la legge di Ohm) le correnti di base, di emettitore. Inoltre, è stata anche calcolata la transcoduttanza. La corrente di collettore è stata ricavata come differenza tra la corrente di emettitore e corrente di base. 
+Una volta realizzato il circuito, sono state misurate le tensioni ai nodi V\sub{B} e V\sub{O} da cui è possibile ricavare (tramite la legge di Ohm) le correnti di base e di emettitore. Inoltre, è possibile calcolare la transcoduttanza come rapporto tra la corrente di collettore stazionaria e la tensione termica. Invece, la corrente di collettore si ricava come differenza tra la corrente di emettitore e corrente di base. 
 
+\noindent
 Sono stati ottenuti i seguenti valori:
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{c|c|c|c|c|c}
 		\hline
 		V\sub{B} [mV] & V\sub{O} [V] & I\sub{B} [mA] & I\sub{E} [mA] & I\sub{C} [mA] & g\sub{m} [A/V]\\ \hline
-		-3.82 & -0.655 & 0.014 & 2.819 & 2.805 & 0.1079\\ \hline
+		-3.820 & -0.655 & 0.014 & 2.819 & 2.805 & 0.1079\\ \hline
 	\end{tabular}
 \end{table}
-I valori misurati si avvicinano ai valori calcolati nell'analisi teorica del punto stazionario (a meno di approssimazioni e errori di misura). In particolare, si noti come la corrente di base sia molto piccola (\SI{14}{\micro\ampere}) e la tensione V\sub{O} che equivale alla tensione della giunzione P-N tra base e emettitore in regione diretta.
 
-Successivamente, si è applicato un segnale sinusoidale v\sub{i} tramite un cavo di tipo BNC collegato al generatore di forme d'onda, impostando una frequenza pari a \textit{f=}\SI{1}{\kilo\hertz} e una tensione picco-picco \textit{V\sub{pp}=}\SI{2}{\volt}. Collegando opportunamente i connettori dell'oscilloscopio, è stato possibile misurare il segnale in ingresso e in uscita al circuito e verificare che il guadagno del circuito fosse unitario.
+\noindent
+I valori misurati si avvicinano ai valori calcolati nell'analisi teorica del punto stazionario (a meno di approssimazioni e errori di misura). In particolare, si noti che la corrente di base, pur non essendo nulla, assume un valore molto piccolo (\SI{14}{\micro\ampere}).
+
+Successivamente, si è applicato un segnale sinusoidale v\sub{i} tramite un cavo di tipo BNC collegato al generatore di forme d'onda, impostando una frequenza pari a \textit{f=}\SI{1}{\kilo\hertz} e una tensione picco-picco \textit{V\sub{pp}=}\SI{2}{\volt}. Collegando opportunamente i connettori dell'oscilloscopio, è stato possibile misurare il segnale in ingresso e in uscita al circuito e verificare che il guadagno del circuito è unitario (\Fig\ref{fig:emitterfollwer_oscilloscopio_1}).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 1/TEK00005}
-	\caption{Segnale in ingresso (CH1) e in uscita (CH2) all'emitter follower misurato con l'oscilloscopio. Onda sinusoidale in ingresso con frequenza \SI{1}{\kilo\hertz} e tensione picco-picco di \SI{2}{\volt}.}
+	\caption{Segnale in ingresso (CH1) e in uscita (CH2) all'emitter follower misurato con l'oscilloscopio. L'onda sinusoidale in ingresso ha frequenza \SI{1}{\kilo\hertz} e tensione picco-picco di \SI{2}{\volt}.}
 	\label{fig:emitterfollwer_oscilloscopio_1}
 \end{figure}
-Si noti come il segnale giallo (ingresso) e il segnale azzurro (uscita) abbiamo uguale ampiezza e fase. Per verificare che lo sfasamento sia nullo, è stata selezionata la modalità XY sull'oscilloscopio (\Fig\ref{fig:emitterfollwer_XY_1}).
+Si noti come il segnale giallo (ingresso) e il segnale azzurro (uscita) abbiano uguale ampiezza e fase. Per verificare lo sfasamento, è possibile selezionare la modalità XY sull'oscilloscopio (\Fig\ref{fig:emitterfollwer_XY_1}) e analizzare il grafico mostrato.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 1/TEK00008}
-	\caption{Grafico XY con onda sinusoidale in ingresso con frequenza \SI{1}{\kilo\hertz} e tensione picco-picco di \SI{2}{\volt}.}
+	\caption{Grafico XY con onda sinusoidale in ingresso di frequenza \SI{1}{\kilo\hertz} e tensione picco-picco di \SI{2}{\volt}.}
 	\label{fig:emitterfollwer_XY_1}
 \end{figure}
-Come si può notare, la presenza di un segmento con inclinazione di 45 gradi indica che i segnali sono in fase. Inoltre, si noti l'offset di circa \SI{0.7}{\volt}, dovuto alla giunzione base-collettore. 
-Tuttavia, aumentando la frequenza dell'onda sinusoidale fino ai \SI{10}{\mega\hertz} si noti come il circuito introduce uno sfasamento. Infatti, a frequenze elevate gli effetti delle capacità parassite presenti nel transistor diventano significativi, introducendo un comportamento simile a un filtro passa-basso. Per questo motivo, il grafico XY (\Fig\ref{fig:emitterfollwer_XY_2}) non mostra più un segmento ma un ellissi, indicando la presenza di uno sfasamento. 
+Come si può notare, la presenza di un segmento con inclinazione di 45 gradi indica che i segnali sono in fase. Inoltre, si noti che l'intersezione del segmento con l'asse delle ordinate rappresenta l'offset, di circa \SI{0.7}{\volt}, dovuto alla giunzione base-emettitore. 
+Tuttavia, aumentando la frequenza dell'onda sinusoidale fino ai \SI{10}{\mega\hertz}, il circuito introduce uno sfasamento. Infatti, a frequenze elevate gli effetti delle capacità parassite presenti nel transistor diventano significativi, introducendo un comportamento di tipo passa-basso. Per questo motivo, il grafico XY (\Fig\ref{fig:emitterfollwer_XY_2}) non mostra più un segmento ma un ellissi, che indica la presenza di uno sfasamento. 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 1/TEK00006}
@@ -140,8 +142,9 @@ Lo sfasamento è visibile anche utilizzando la rappresentazione sull'asse dei te
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 1/TEK00007}
-	\caption{Segnale in ingresso (CH1) e in uscita (CH2) all'emitter follower misurato con l'oscilloscopio. Onda sinusoidale in ingresso con frequenza \SI{10}{\mega\hertz} e tensione picco-picco di \SI{2}{\volt}. I segnali in ingresso sono stati accoppiati in AC.}
+	\caption{Segnale in ingresso (CH1) e in uscita (CH2) all'emitter follower misurato con l'oscilloscopio. L'onda sinusoidale in ingresso ha frequenza \SI{10}{\mega\hertz} e tensione picco-picco di \SI{2}{\volt}. I segnali in ingresso sono stati accoppiati in AC.}
 	\label{fig:emitterfollwer_oscilloscopio_2}
 \end{figure}
 
-\todo{e il guadagno?? laboratorio dopo}
+\noindent
+Osservando i grafici delle tensioni ingresso-uscita è possibile notare che il circuito a guadagno unitario. Tuttavia, un'analisi più approfondita sul guadagno del circuito è stata svolta nella attività di laboratorio successiva.
