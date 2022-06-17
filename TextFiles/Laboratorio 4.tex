@@ -70,7 +70,7 @@ tramite un bilancio di corrente nel nodo V\textsuperscript{+} e ricordando che, 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 4/TEK00005}
-	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{2}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
+	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{2}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
 	\label{fig:opamp_inv_amp}
 \end{figure}
 
@@ -87,14 +87,14 @@ Sostituendo le tensioni di alimentazione con +E=\SI{+5}{\volt} e -E=\SI{-5}{\vol
 	\vspace{0.5cm}
 	
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 4/TEK00012}
-	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{3}{\volt} (A) e \SI{6}{\volt} (B) e frequenza \SI{1}{\kilo\hertz}.}
+	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{3}{\volt} (A) e \SI{6}{\volt} (B) e frequenza \SI{1}{\kilo\hertz}.}
 	\label{fig:opamp_inv_sat}
 \end{figure}
 \`E possibile notare il fenomeno della saturazione. Infatti, la tensione in uscita da un amplificatore operazione non può mai superare le tensioni di alimentazione positiva e negativa (qui fissate a \SI{+-5}{\volt}). In realtà, si nota come la tensione di saturazione positiva e negativa in un operazionale reale sono addirittura inferiori alle tensioni di alimentazione (nel nostro caso circa \SI{4}{\volt} e \SI{-3.3}{\volt}). Un altro modo per visualizzare le tensioni limite di saturazione è quello di utilizzare in ingresso un onda triangolare e visualizzare l'andamento della tensione in uscita (\Fig\ref{fig:opamp_inv_sat_tri}).
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 4/TEK00015}
-	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) con segnale triangolare di ampiezza picco-picco \SI{6}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
+	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) con segnale triangolare di ampiezza picco-picco \SI{6}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
 	\label{fig:opamp_inv_sat_tri}
 \end{figure}
 
@@ -139,13 +139,7 @@ che corrisponde nel dominio del tempo all'integrale del segnale V\sub{i} nel tem
 \end{equation}
 
 \noindent
-Per verificarlo sperimentalmente, è stato applicato sull'ingresso V\sub{i} un'onda quadra di ampiezza \SI{1}{\volt} e frequenza di \SI{100}{\kilo\hertz}. Il segnale in uscita misurato sul nodo V\sub{o} è risultato essere un'onda triangolare (\Fig\ref{fig:opamp_int_quadra}).
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00016}
-	\caption{Confronto tra il segnale in ingresso v\sub{i} (CH1)  e in uscita v\sub{o} (CH2) all'integratore. In ingresso è stata applicata un'onda quadra di ampiezza \SI{1}{\volt} e frequenza \SI{100}{\kilo\hertz}.}
-	\label{fig:opamp_int_quadra}
-\end{figure}
+Per verificarlo sperimentalmente, è stato applicato sull'ingresso V\sub{i} un'onda quadra di ampiezza \SI{1}{\volt} e frequenza di \SI{100}{\kilo\hertz}. Il segnale in uscita misurato sul nodo V\sub{o} è risultato essere un'onda triangolare (\Fig\ref{fig:opamp_int_quadra}) con ampiezza minore e con uno sfasamento di \SI{-180}{\degree} rispetto all'onda quadra in ingresso. Il circuito non funziona come un amplificatore ma come un integratore, introducendo uno sfasamento di \SI{-180}{\degree} (come indicava il segno meno nella funzione di trasferimento).
 
 \noindent
 Infatti, un'onda quadra di ampiezza 1 e periodo T può essere definita come una funzione a tratti:
@@ -164,6 +158,11 @@ La sua funzione integrale $F(x)=\int_0^xf(t)dt$ è la seguente:
 		T-x,\;se\;T/2<=x<T 
 	\end{cases}
 \end{equation}
-che rappresenta proprio un onda triangolare.
+che rappresenta l'equazione di un onda triangolare.
 
-\todo{vi nelgi opamp grande}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00016}
+	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) all'integratore. In ingresso è stata applicata un'onda quadra di ampiezza \SI{1}{\volt} e frequenza \SI{100}{\kilo\hertz}.}
+	\label{fig:opamp_int_quadra}
+\end{figure}
