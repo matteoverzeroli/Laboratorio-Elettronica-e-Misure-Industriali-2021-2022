@@ -7,7 +7,7 @@ In questa esperienza di laboratorio è stato analizzato il circuito di amplifica
 	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 3/common emitter}
 	B
 	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 3/common emitter_se}
-	\caption{Schematico del circuito common emitter con degenerazione di emettitore nella versione con alimentazione doppia (A) e singola (B).}
+	\caption{Schema del circuito common emitter con degenerazione di emettitore nella versione con alimentazione doppia (A) e singola (B).}
 	\label{fig:commonemitter}
 \end{figure}
 Come verrà discusso in seguito, la resistenza di emettitore permette di ottenere un guadagno che è indipendente dalla transconduttanza del transistor (più precisamente, permette di ridurre in modo significativo la dipendenza del guadagno dalla transconduttanza). \`E possibile realizzare anche una versione dell'amplificatore a emettitore comune senza la resistenza di degenerazione R\sub{E}. Tuttavia, il guadagno risulterebbe pari a $\frac{v_o}{v_i}=-g_m R_c$, dove $g_m=\frac{I_C}{\phi_T}$ e $\phi_T=\frac{k T}{q}$, introducendo una dipendenza dalla temperatura T a cui il circuito opera.
@@ -16,7 +16,7 @@ Come verrà discusso in seguito, la resistenza di emettitore permette di ottener
 Prima di procedere alla realizzazione dei circuito analizziamone il punto di lavoro. 
 
 \noindent
-Consideriamo prima la versione con alimentazione doppia. Supponiamo il transistor in regione attiva diretta, con corrente di base I\sub{B} nulla. Di conseguenza, la tensione al nodo V\sub{B} sarà nulla (corrente nella resistenza R\sub{B} nulla). Ricordando che $V_{BE}=\SI{-0.7}{\volt}$, si deriva che $V_E=\SI{-0.7}{\volt}$. Per cui, la corrente che attraversa la resistenza R\sub{E} è pari a (legge di Ohm) $I_E=\frac{V_E-(\SI{-2}{\volt})}{R_E}$. Dal bilancio di correnti nel transistor, si ricava che $I_C+I_B=I_E$, da cui $I_C=I_E$. La tensione al nodo V\sub{o} si ricava tramite legge di Ohm: $I_C=\frac{\SI{10}{\volt}-V_o}{R_C}$, da cui $V_o= \SI{10}{\volt}-R_CI_C$. Inoltre, ricordiamo che $g_m=\frac{I_C}{\phi_T}$, con $I_C$ corrente di collettore stazionaria e $\phi_T\simeq\SI{26}{\milli\volt}$. Bisognerà verificare che V\sub{BE} sia positiva, in modo da confermare l'ipotesi che il transistor si trova in regione attiva diretta.
+Consideriamo prima la versione con alimentazione doppia (\Fig\ref{fig:commonemitter_DC}). Supponiamo il transistor in regione attiva diretta, con corrente di base I\sub{B} nulla. Di conseguenza, la tensione al nodo V\sub{B} sarà nulla (corrente nella resistenza R\sub{B} nulla). Ricordando che $V_{BE}=\SI{-0.7}{\volt}$, si deriva che $V_E=\SI{-0.7}{\volt}$. Per cui, la corrente che attraversa la resistenza R\sub{E} è pari a (legge di Ohm) $I_E=\frac{V_E-(\SI{-2}{\volt})}{R_E}$. Dal bilancio di correnti nel transistor, si ricava che $I_C+I_B=I_E$, da cui $I_C=I_E$. La tensione al nodo V\sub{o} si ricava tramite legge di Ohm: $I_C=\frac{\SI{10}{\volt}-V_o}{R_C}$, da cui $V_o= \SI{10}{\volt}-R_CI_C$. Inoltre, ricordiamo che $g_m=\frac{I_C}{\phi_T}$, con $I_C$ corrente di collettore stazionaria e $\phi_T\simeq\SI{26}{\milli\volt}$. Bisognerà verificare che V\sub{CB} sia positiva, in modo da confermare l'ipotesi che il transistor si trova in regione attiva diretta.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 3/common emitter-punto di lavoro-printout}
@@ -43,19 +43,19 @@ L'analisi del punto di lavoro del circuito \textit{common emitter amplifier} nel
 	\caption{Analisi del punto di lavoro del circuito common emitter amplifier con alimentazione singola.}
 	\label{fig:commonemitter_se_DC}
 \end{figure}
-Supponendo che la corrente di base sia zero (ossia che $\beta\to\infty$), da un bilancio di corrente al nodi V\sub{B} e nel transistor, otteniamo che $I_1=I_2$ e $I_C=I_E$. Si noti che il condensatore è stato considerato come un circuito aperto nell'analisi DC. Infatti, il suo ruolo è quello di disaccoppiare in continua i nodi V\sub{B} e V\sub{i}, in modo che la tensione di offset imposta dal partitore di tensione formato da R\sub{1} e R\sub{2} non sia portata a massa dal generatore V\sub{i}. Infatti, come già discusso in precedenza nell'analisi dell'emitter follower single-ended, le resistenze R\sub{1} e R\sub{2} hanno il compito di alzare la tensione nel nodo V\sub{B}, in modo da mantenere il transistor in zona attiva diretta.
+Supponendo che la corrente di base sia zero (ossia che $\beta\to\infty$), da un bilancio di corrente al nodi V\sub{B} e nel transistor, otteniamo che $I_1=I_2$ e $I_C=I_E$. Si noti che il condensatore è stato considerato come un circuito aperto nell'analisi DC. Infatti, il suo ruolo è quello di disaccoppiare in continua i nodi V\sub{B} e V\sub{i}, in modo da mantenere la tensione di offset imposta dal partitore di tensione formato da R\sub{1} e R\sub{2} quando si spegne il generatore v\sub{i}. Infatti, come già discusso in precedenza nell'analisi dell'emitter follower single-ended, le resistenze R\sub{1} e R\sub{2} hanno il compito di alzare la tensione nel nodo V\sub{B}, in modo da mantenere il transistor in zona attiva diretta.
 
 \noindent
 Ricaviamo quindi la tensione V\sub{B} utilizzando la legge di Ohm:
 \begin{equation}
 	\begin{split}
-		I=I_1&=I_2 \\
+		I_1&=I_2 \\
 		\frac{\SI{10}{\volt}-V_B}{R_1}&=\frac{V_B-\SI{0}{\volt}}{R_2} \\
 		V_B&=\frac{R_2}{R_1+R_2}\SI{10}{\volt}
 	\end{split}
 \end{equation}
 La tensione al nodo V\sub{E} si ricava dall'equazione $V_{BE}=V_B-V_E=\SI{0.7}{\volt}$ (transistor in zona attiva diretta), da cui $V_E=V_B-\SI{0.7}{\volt}$. Conoscendo V\sub{E} è ora possibile calcolare la corrente I\sub{E} e I\sub{C} tramite la legge di Ohm: $I_E=I_C=\frac{V_E-\SI{0}{\volt}}{R_E}$. 
-Infine, la tensione nel nodo V\sub{O} sarà $V_O=\SI{10}{\volt}-I_CR_C$. Si dovrà inoltre verificare che la tensione V\sub{CB} sia maggiore di zero.
+Infine, la tensione nel nodo V\sub{o} sarà $V_o=\SI{10}{\volt}-I_CR_C$. Si dovrà inoltre verificare che la tensione V\sub{CB} sia maggiore di zero.
 
 \noindent
 Sostituendo i valori dei componenti utilizzati nel circuito otteniamo i seguenti valori, che dovranno essere confrontati con quelli misurati sul circuito reale:
@@ -69,7 +69,7 @@ Sostituendo i valori dei componenti utilizzati nel circuito otteniamo i seguenti
 \end{table}
 
 \section{Common emitter amplifier: analisi per piccolo segnale}\label{sec:33}
-Si procede ora con l'analisi di piccolo segnale, utilizzando il modello per piccolo segnale a bassa frequenza del transistor e spegnendo i generatori di grandezze continue.
+Si procede ora con l'analisi di piccolo segnale, utilizzando il modello per piccolo segnale a bassa frequenza del transistor senza resistenza di base e spegnendo i generatori di grandezze continue.
 
 \noindent
 Considerando il circuito a emettitore comune con alimentazione doppia si ottiene il circuito equivalente in figura \ref{fig:commonemitter_AC}.
@@ -95,7 +95,8 @@ Risolvendo il sistema, è possibile calcolare la funzione di trasferimento del c
 Il guadagno del circuito è quindi determinato dal rapporto tra la resistenza di collettore e quella di emettitore. Inoltre, la presenza di un segno meno nella funzione di trasferimento indica che il circuito introduce uno sfasamento di \SI{-180}{\degree} tra il segnale in ingresso e quello in uscita (amplificatore invertente). 
 
 \noindent
-L'analisi di piccolo segnale nella versione con singola alimentazione è identica a quella presentata precedentemente sotto l'ipotesi che $C\to\infty$, ossia che il condensatore si comporti come un corto circuito per frequenze del segnale sufficientemente alte. Sotto questa ipotesi semplificativa, $v_b=v_i$. Con la risoluzione del medesimo sistema di equazioni si determina che il guadagno è $\frac{v_o}{v_i}\simeq-\frac{R_C}{R_E}.$
+L'analisi di piccolo segnale nella versione con singola alimentazione (\Fig
+\ref{fig:commonemitter_se_AC}) è identica a quella appena presentata, sotto l'ipotesi che $C\to\infty$, ossia che il condensatore si comporti come un corto circuito per frequenze del segnale sufficientemente alte. Sotto questa ipotesi semplificativa, $v_b=v_i$. Con la risoluzione del medesimo sistema di equazioni si determina che il guadagno è $\frac{v_o}{v_i}\simeq-\frac{R_C}{R_E}.$
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.4\linewidth]{./OtherFiles/Laboratorio 3/common emitter_se-piccolo segnale-printout}
@@ -104,7 +105,7 @@ L'analisi di piccolo segnale nella versione con singola alimentazione è identic
 \end{figure}
 
 \noindent
-Sostituendo i valori delle resistenze da utilizzare nei nostri circuiti ci aspettiamo un guadagno di:
+Sostituendo i valori delle resistenze da utilizzare nella realizzazione dei circuiti, si ricava un guadagno atteso di:
 \begin{equation}
 	\frac{v_o}{v_i}=-\frac{\SI{3.9}{\kilo\ohm}}{\SI{1.8}{\kilo\ohm}}\simeq -2.17.
 \end{equation}
@@ -159,11 +160,11 @@ Nelle seguenti tabelle vengono riportate le misure dei componenti usati effettua
 		Componente & Valore nominale & Valore misurato \\ \hline
 		R\sub{C} & \SI{3.9}{\kilo\ohm} & \SI{3.962}{\kilo\ohm} \\ \hline
 		R\sub{E} & \SI{1.8}{\kilo\ohm} & \SI{1.825}{\kilo\ohm} \\ \hline
-		R\sub{B} & \SI{270}{\kilo\ohm} & \SI{274.6}{\ohm} \\ \hline
+		R\sub{B} & \SI{270}{\ohm} & \SI{275}{\ohm} \\ \hline
 		Vd\sub{B-E} & $\simeq$ \SI{0.7}{\volt} & \SI{0.700}{\volt} \\ \hline
 		Vd\sub{B-C} & $\simeq$ \SI{0.7}{\volt} & \SI{0.679}{\volt} \\ \hline
 	\end{tabular}
-	\caption{Valori dei componenti utilizzati per il circuito common emitter amplifier con alimentazione doppia misurati con il multimetro.}
+	\caption{Valori dei componenti utilizzati per il circuito common emitter amplifier con alimentazione doppia.}
 \end{table}
 \begin{table}[h!]
 	\centering
@@ -179,7 +180,7 @@ Nelle seguenti tabelle vengono riportate le misure dei componenti usati effettua
 		Vd\sub{B-E} & $\simeq$ \SI{0.7}{\volt} & \SI{0.700}{\volt} \\ \hline
 		Vd\sub{B-C} & $\simeq$ \SI{0.7}{\volt} & \SI{0.679}{\volt} \\ \hline
 	\end{tabular}
-	\caption{Valori componenti utilizzati per il circuito common emitter amplifier con alimentazione singola misurati con il multimetro.}
+	\caption{Valori componenti utilizzati per il circuito common emitter amplifier con alimentazione singola.}
 \end{table}
 
 \noindent
@@ -204,7 +205,7 @@ Una volta realizzato il circuito, sono state misurate le tensioni ai nodi V\sub{
 \end{table}
 
 \noindent
-\`E importante osservare che la corrente di base I\sub{B} misurata nel circuito con alimentazione doppia è negativa. Infatti, la corrente di emettitore risulta essere minore della corrente di collettore. Tuttavia, ciò non è ammissibile per costruzione del transistor. Questo risultato però non deve sorprendere in quanto l'errore è dell'ordine di $10^{-7}$ A. Trattandosi di una corrente molto piccola, è difficile misurarla con gli strumenti a disposizione.
+\`E importante osservare che la corrente di base I\sub{B} misurata nel circuito con alimentazione doppia è negativa. Infatti, la corrente di emettitore risulta essere minore della corrente di collettore. Tuttavia, ciò non è ammissibile per costruzione del transistor. Questo risultato però non deve sorprendere in quanto l'errore è dell'ordine di $10^{-7}$ A. Trattandosi di una corrente molto piccola, è probabile che derivi da un errore di misura sulle grandezze misurate con il multimetro.
 
 In seguito è stata misurata la risposta del circuito a un ingresso sinusoidale. 
 

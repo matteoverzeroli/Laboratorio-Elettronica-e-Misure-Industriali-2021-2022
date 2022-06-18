@@ -1,6 +1,6 @@
 \chapter{Laboratorio 4}
 \section{Introduzione}
-Durante questa attività di laboratorio si è dapprima terminata l'analisi per piccolo segnale del circuito common emitter amplifier e in seguito si è introdotto l'utilizzo del amplificatore operazionale \textmu A741 (datasheet:\url{https://www.ti.com/lit/ds/symlink/ua741.pdf}), utilizzato nella configurazione di amplificatore invertente e integratore reale.
+Durante questa attività di laboratorio si è dapprima terminata l'analisi per piccolo segnale del circuito common emitter amplifier single-ended e, in seguito, si è introdotto l'utilizzo dell'amplificatore operazionale \textmu A741 (datasheet:\url{https://www.ti.com/lit/ds/symlink/ua741.pdf}), utilizzato nella configurazione di amplificatore invertente e integratore reale.
 
 \section{Common emitter amplifier: analisi capacità di disaccoppiamento in ingresso}
 Si ricordi l'analisi di piccolo segnale del circuito common emitter amplifier con alimentazione singola già presentata (capitolo \ref{sec:33}), considerando però ora anche la capacità di disaccoppiamento C (\Fig\ref{fig:commonemitter_se_c_AC}).
@@ -12,7 +12,7 @@ Si ricordi l'analisi di piccolo segnale del circuito common emitter amplifier co
 \end{figure}
 
 \noindent
-Le resistenze R\sub{1} e R\sub{2} sono in parallelo, poiché connesse tra il nodo v\sub{b} e massa. Esse possono quindi essere sostituite con una resistenza equivalente di valore $R_{12}=R_1 // R_2=\frac{R_1 R_2}{R_1+R_2}$. Svolgendo un bilancio di correnti al nodo v\sub{b}, siamo in grado di definire l'andamento della tensione nel nodo v\sub{b} nel dominio delle trasformate di Laplace:
+Le resistenze R\sub{1} e R\sub{2} sono in parallelo dal punto di vista del segnale applicato, poiché connesse tra il nodo v\sub{b} e massa. Quindi, possono essere sostituite con una resistenza equivalente di valore $R_{12}=R_1 // R_2=\frac{R_1 R_2}{R_1+R_2}$. Svolgendo un bilancio di correnti al nodo v\sub{b}, siamo in grado di definire l'andamento della tensione nel nodo v\sub{b} nel dominio delle trasformate di Laplace:
 \begin{equation}
 	\begin{split}
 		i_C(s)&=i_R(s) \\
@@ -34,7 +34,7 @@ Di seguito è riportato il diagramma di Bode reale del modulo della funzione di 
 \end{figure}
 
 \noindent
-In laboratorio è stato possibile misurare la tensione al nodo v\sub{i} in ingresso e la tensione sul nodo v\sub{b}, con un segnale sinusoidale di frequenza \SI{10}{\hertz} e ampiezza picco-picco di \SI{100}{\milli\volt}. Nella figura \ref{fig:hpf_10hz} sono riportati i risultati. Lavorando ad una frequenza (che equivale a una pulsazione $w\simeq\SI{62.8}{\radian/\second}$) inferiore alla frequenza critica del filtro, il segnale è attenuato di circa \SI{4.2}{\decibel}. Inoltre, l'acquisizione risulta essere molto rumorosa, in quanto l'oscilloscopio presenta difficoltà nel misurare segnali con frequenza così bassa. Tuttavia, questo risultato è compatibile con il digramma di Bode del modulo sopra mostrato, il quale indica un valore di attenuazione pari a \SI{-6}{\decibel}. Inoltre, si può notare anche uno sfasamento tra i segnali in ingresso e in uscita introdotto dal filtro passa alto.
+In laboratorio è stato possibile misurare la tensione al nodo v\sub{i} in ingresso e la tensione sul nodo v\sub{b}, con un segnale sinusoidale di frequenza \SI{10}{\hertz} e ampiezza picco-picco di \SI{100}{\milli\volt}. Nella figura \ref{fig:hpf_10hz} sono riportati i risultati. Lavorando ad una frequenza (che equivale a una pulsazione $w\simeq\SI{62.8}{\radian/\second}$) inferiore alla frequenza critica del filtro, il segnale misurato è attenuato di circa \SI{4.2}{\decibel}. Tuttavia, l'acquisizione risulta essere molto rumorosa, in quanto l'oscilloscopio presenta difficoltà nel misurare segnali con frequenza così bassa. Si può notare che il risultato ottenuto è però compatibile con il digramma di Bode del modulo sopra mostrato, il quale indica un valore di attenuazione pari a \SI{-6}{\decibel}. Inoltre, si può notare anche uno sfasamento tra i segnali in ingresso e in uscita introdotto dal filtro passa alto.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 4/TEK00003}
@@ -66,11 +66,11 @@ Analizzando il circuito, è facilmente ricavabile che
 \begin{equation}
 	V_o=-\frac{R_2}{R_1}V_i,
 \end{equation}
-tramite un bilancio di corrente nel nodo V\textsuperscript{+} e ricordando che, in presenza di una reazione negativa, V\textsuperscript{+}=V\textsuperscript{-}. Con i valori di resistenze utilizzate, ci aspettiamo un guadagno di circa 2.17. Infatti, le misure effettuate tramite l'oscilloscopio rilevano un guadagno pari a circa 2.12 (\Fig\ref{fig:opamp_inv_amp}). Inoltre, il segno meno nella funzione di trasferimento ci indica che i segnali di ingresso e uscita devono risultare sfasati di \SI{180}{\degree}.
+tramite un bilancio di corrente nel nodo V\textsuperscript{+} e ricordando che, in presenza di una reazione negativa, V\textsuperscript{+}=V\textsuperscript{-}. Con i valori di resistenze utilizzate, ci aspettiamo un guadagno di circa $\frac{R_2}{R_1}=2.17$. Infatti, le misure effettuate tramite l'oscilloscopio rilevano un guadagno pari a circa 2.12 (\Fig\ref{fig:opamp_inv_amp}). Inoltre, i segnali risultano essere in controfase, così come indicato dal segno meno nella funzione di trasferimento.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{./ImageFiles/Laboratorio 4/TEK00005}
-	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{2}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
+	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) con segnale sinusoidale di ampiezza picco-picco \SI{1}{\volt} e frequenza \SI{1}{\kilo\hertz}.}
 	\label{fig:opamp_inv_amp}
 \end{figure}
 
@@ -99,7 +99,7 @@ Sostituendo le tensioni di alimentazione con +E=\SI{+5}{\volt} e -E=\SI{-5}{\vol
 \end{figure}
 
 \noindent
-Si osservi come le tensioni di saturazioni non sono simmetriche, come spesso accade in amplificatori operazionali reali.
+Si osservi come le tensioni di saturazioni positiva e negativa non sono simmetriche, come spesso accade in amplificatori operazionali reali.
 
 \clearpage
 \section{Amplificatore operazionale \textmu A741: integratore}
@@ -139,7 +139,7 @@ che corrisponde nel dominio del tempo all'integrale del segnale V\sub{i} nel tem
 \end{equation}
 
 \noindent
-Per verificarlo sperimentalmente, è stato applicato sull'ingresso V\sub{i} un'onda quadra di ampiezza \SI{1}{\volt} e frequenza di \SI{100}{\kilo\hertz}. Il segnale in uscita misurato sul nodo V\sub{o} è risultato essere un'onda triangolare (\Fig\ref{fig:opamp_int_quadra}) con ampiezza minore e con uno sfasamento di \SI{-180}{\degree} rispetto all'onda quadra in ingresso. Il circuito non funziona come un amplificatore ma come un integratore, introducendo uno sfasamento di \SI{-180}{\degree} (come indicava il segno meno nella funzione di trasferimento).
+Per verificarlo sperimentalmente, è stato applicato sull'ingresso V\sub{i} un'onda quadra di ampiezza \SI{1}{\volt} e frequenza di \SI{100}{\kilo\hertz}. Il segnale in uscita misurato sul nodo V\sub{o} è risultato essere un'onda triangolare (\Fig\ref{fig:opamp_int_quadra}) con ampiezza minore dell'onda quadra e con uno sfasamento di \SI{-180}{\degree} rispetto al segnale in ingresso. Il circuito non funziona come un amplificatore ma come un integratore, introducendo uno sfasamento di \SI{-180}{\degree} (come indicava il segno meno nella funzione di trasferimento).
 
 \noindent
 Infatti, un'onda quadra di ampiezza 1 e periodo T può essere definita come una funzione a tratti:
@@ -163,6 +163,6 @@ che rappresenta l'equazione di un onda triangolare.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{./ImageFiles/Laboratorio 4/TEK00016}
-	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) all'integratore. In ingresso è stata applicata un'onda quadra di ampiezza \SI{1}{\volt} e frequenza \SI{100}{\kilo\hertz}.}
+	\caption{Confronto tra il segnale in ingresso V\sub{i} (CH1)  e in uscita V\sub{o} (CH2) al circuito integratore. In ingresso è stata applicata un'onda quadra di ampiezza \SI{1}{\volt} e frequenza \SI{100}{\kilo\hertz}.}
 	\label{fig:opamp_int_quadra}
 \end{figure}
